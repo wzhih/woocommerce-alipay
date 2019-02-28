@@ -62,7 +62,7 @@ class WC_Gateway_Alipay extends WC_Payment_Gateway
             'enabled' => array(
                 'title' => __('Enable/Disable', 'woocommerce'),
                 'type' => 'checkbox',
-                'lable' => '开启支付宝支付',
+                'label' => '开启支付宝支付',
                 'default' => 'no'
             ),
             'title' => array(
@@ -119,7 +119,7 @@ class WC_Gateway_Alipay extends WC_Payment_Gateway
             'sandbox' => array(
                 'title' => __('Enable/Disable', 'woocommerce'),
                 'type' => 'checkbox',
-                'lable' => '开启支付宝沙箱环境',
+                'label' => '开启支付宝沙箱环境',
                 'default' => 'yes'
             )
         );
