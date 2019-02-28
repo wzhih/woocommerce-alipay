@@ -62,64 +62,64 @@ class WC_Gateway_Alipay extends WC_Payment_Gateway
             'enabled' => array(
                 'title' => __('Enable/Disable', 'woocommerce'),
                 'type' => 'checkbox',
-                'lable' => __('开启支付宝支付', 'woocommerce'),
+                'lable' => '开启支付宝支付',
                 'default' => 'no'
             ),
             'title' => array(
                 'title' => __('Title', 'woocommerce'),
                 'type' => 'text',
-                'description' => __('用户在结算时会看到的标题', 'woocommerce'),
-                'default' => __('支付宝支付', 'woocommerce'),
+                'description' => '用户在结算时会看到的标题',
+                'default' => '支付宝支付',
                 'desc_tip' => true,
                 'css' => 'width:400px'
             ),
 
             'description' => array(
-                'title' => __('Alipay description', 'woocommerce'),
+                'title' => '支付网关描述',
                 'type' => 'textarea',
-                'default' => '',
+                'default' => '用户在结算时会看到的描述',
                 'css' => 'width:400px'
             ),
             'appid' => array(
                 'title' => __('APP ID', 'woocommerce'),
                 'type' => 'text',
                 'default' => '',
-                'description' => __('应用的APP ID', 'woocommerce'),
+                'description' => '应用的APP ID',
                 'css' => 'width:400px'
             ),
 
             'appsecret' => array(
-                'title' => __('APP私钥', 'woocommerce'),
+                'title' => 'APP私钥',
                 'type' => 'text',
                 'default' => '',
-                'description' => __('应用秘钥', 'woocommerce'),
+                'description' => '应用秘钥',
                 'css' => 'width:400px'
             ),
             'signtype' => array(
-                'title' => __('加签方式', 'woocommerce'),
+                'title' => '加签方式',
                 'type' => 'text',
                 'default' => 'RSA2',
-                'description' => __('加签方式，最新的支付宝加密方式应该是RSA2，按需填写', 'woocommerce'),
+                'description' => '加签方式，最新的支付宝加密方式应该是RSA2，按需填写',
                 'css' => 'width:400px'
             ),
             'alipaysecret' => array(
-                'title' => __('支付宝公钥', 'woocommerce'),
+                'title' => '支付宝公钥',
                 'type' => 'text',
                 'default' => '',
-                'description' => __('支付宝公钥', 'woocommerce'),
+                'description' => '支付宝公钥',
                 'css' => 'width:400px'
             ),
             'pid' => array(
-                'title' => __('卖家支付宝PID', 'woocommerce'),
+                'title' => '卖家支付宝PID',
                 'type' => 'text',
                 'default' => '',
-                'description' => __('卖家支付宝用户号，以2088开头', 'woocommerce'),
+                'description' => '卖家支付宝用户号，以2088开头',
                 'css' => 'width:400px'
             ),
             'sandbox' => array(
                 'title' => __('Enable/Disable', 'woocommerce'),
                 'type' => 'checkbox',
-                'lable' => __('开启支付宝沙箱环境', 'woocommerce'),
+                'lable' => '开启支付宝沙箱环境',
                 'default' => 'yes'
             )
         );
@@ -147,7 +147,7 @@ class WC_Gateway_Alipay extends WC_Payment_Gateway
         // 调用支付宝支付接口
         $request = new AlipayTradePagePayRequest();
         $return_url = $this->get_return_url($order);
-        $notify_url = str_replace('https:', 'http:', add_query_arg('wc-api', 'WC_Gateway_Alipay', home_url('/')));
+        $notify_url = str_replace('https:', 'http:', add_query_arg('wc-api', 'wc_gateway_alipay', home_url('/')));
         $request->setReturnUrl($return_url); // 同步返回地址，http//https开头
         $request->setNotifyUrl($notify_url); // 支付宝服务器主动通知商户服务器里指定的页面http/https路径
         $request->setBizContent('{"product_code":"FAST_INSTANT_TRADE_PAY","out_trade_no": "' . $order_id . '", "subject": "' . $order_title . '", "total_amount": "' . $total_amount . '"}');   // 业务请求参数的集合，最大长度不限

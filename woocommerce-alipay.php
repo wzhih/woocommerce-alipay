@@ -46,6 +46,9 @@ function notify()
 
     $wc_getway_alipay = new WC_Gateway_Alipay();
     if ($wc_getway_alipay->check_response($data)) {
+        if (!$wc_getway_alipay->check_data($data)) {
+            die("fail");
+        }
         $order = new WC_Order($data['out_trade_no']);
         //删除支付时生成的页面
         $file = 'tmp/' . md5($order->get_id()) . ".php";
@@ -55,12 +58,8 @@ function notify()
         if ($order->needs_payment()) {
             $order->payment_complete();
         }
-
-        echo "success";
+        die("success");
     } else {
-        echo "fail";
+        die("fail");
     }
-
-    die;
 }
-
