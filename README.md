@@ -26,4 +26,4 @@
 
 至于回调地址，如下例子所示：
 
-http://winton.wang/?wc-api=woocommerce_api_wc_gateway_alipay
+http://winton.wang/?wc-api=wc_gateway_alipay
